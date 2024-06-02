@@ -2,13 +2,20 @@
 	<view>
 		
 		<!-- BASE_IMG+ -->
+		
+		
+		
+		
 		<block v-if="exType!=1">
+			
+			
 			<view class="colonn viewhom colonn center_center"
 			:style="{  
 				'background-image':'url('+yubaomingInfo.cover+')'
 				}"   
 				   style="background-size: 100% 100%;background-repeat: no-repeat;"
 			>
+			<!-- saldh alsk阿斯利康对你好 -->
 				<view class="colonn " 
 				style="position: absolute;bottom: 200rpx;z-index: 1010">
 					<view class="tiquerweima" @click.stop="toPre(1)">领取门票</view>

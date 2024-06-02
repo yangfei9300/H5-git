@@ -1,6 +1,9 @@
 <script>
 	export default {
 		onLoad() {
+			
+			
+			
 			// http://192.168.0.69:8080?exType=3&exhId=149    全屋
 			// http://192.168.0.69:8080?exType=5&exhId=150    建材
 			// http://192.168.0.69:8080?exType=4&exhId=155    秋交会
