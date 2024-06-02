@@ -1,0 +1,80 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "预登记"
+			}
+		}
+		,{
+		    "path" : "pages/login/login",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "登录",
+		        "enablePullDownRefresh": false
+		    }
+		}
+		,{
+            "path" : "pages/preRegistration/preRegistration",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "预登记",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/xieyi/xieyi",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "协议",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/groupQr/groupQr",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "团长分享码",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/fuli/fuli",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "邀约福利",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/yaoyuejilu/yaoyuejilu",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "邀约记录",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/kzsjtj/kzsjtj",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "下届开展时间统计问卷",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "预报名",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationStyle": "custom",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {}
+}
