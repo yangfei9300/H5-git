@@ -1,0 +1,1 @@
+<view class="colonn center_center"><block wx:if="{{yubaominghuacn.exhType==1}}"><image class="w-750" mode="widthFix" src="{{yubaominghuacn.cover}}"></image></block><block wx:else><rich-text nodes="{{yubaominghuacn.invitationRules}}"></rich-text></block></view>

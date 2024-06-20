@@ -89,19 +89,25 @@
 			</view>
 		</view>
 
-		<view v-if="ifShow" class="huuibeijing colonn center_center">
-			<view style="font-size: 30rpx; color: white; font-weight: bold">观众邀约码</view>
+		<view v-if="ifShow" 
+		class="huuibeijing colonn center_center"
+		style="background-color: rgba(255, 255, 255, 0.5);"
+		>  
+			<view style="font-size: 30rpx; color: black; font-weight: bold">观众邀约码</view>
 			<view class="h-30"></view>
 			<tki-qrcode cid="qrcode2" ref="qrcode2" :val="qrValue" :size="size" :onval="onval" :loadMake="loadMake" :usingComponents="true" @result="qrR" />
 			<view class="h-20"></view>
 			<view class="qrimg" @click.stop="ifShowClick">关闭</view>
 			<view class="h-20"></view>
-			<view style="color: white">【请大家截图保存（或者长按二维码保存）】</view>
+			<view style="color: black">【请大家截图保存（或者长按二维码保存）】</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	const CryptoJS = require('crypto-js') // 引用AES源码js
+	const key = CryptoJS.enc.Utf8.parse('2020081720200817') // 十六位十六进制数作为密钥
+	
 export default {
 	data() {
 		return {
@@ -147,8 +153,15 @@ export default {
 		}
 		var exType = uni.getStorageSync('exType');
 		var nowExhId = uni.getStorageSync('nowExhId');
-		var qrValue = 'https://frdzhtsignup.zsyflive.com?exType=' + exType + '&exhId=' + nowExhId + '&upUid=' + this.unionid;
-		this.qrValue = qrValue;
+		
+		var timestamp = Date.parse(new Date());
+		// timestamp=timestamp-2200000
+		var qrValue = 'https://frdzhtsignup.zsyflive.com?exType=' + exType + '&exhId=' + nowExhId + '&upUid=' + this.unionid+"&timestamp="+timestamp;
+		var txt=qrValue.split("?")[1];
+		var toJaimiStr=getApp().aesEncrypt(txt);
+		toJaimiStr="https://frdzhtsignup.zsyflive.com/frd/"+toJaimiStr;
+		this.qrValue=toJaimiStr;
+		// this.qrValue = qrValue;
 		var isWeixin = uni.getStorageSync('isWeixin');
 		if (isWeixin && isWeixin == 1) {
 			this.$tools.shareWx();
@@ -162,11 +175,28 @@ export default {
 		}
 	},
 	methods: {
+		// 解密方法
+		Decrypt(word) {
+			let decrypt = CryptoJS.AES.decrypt(word, key, {
+				mode: CryptoJS.mode.ECB,
+				padding: CryptoJS.pad.Pkcs7
+			})
+			let decryptedStr = decrypt.toString(CryptoJS.enc.Utf8)
+			return decryptedStr.toString()
+		},
+		// 加密方法
+		Encrypt(word) {
+			let encrypted = CryptoJS.AES.encrypt(word, key, {
+				mode: CryptoJS.mode.ECB,
+				padding: CryptoJS.pad.Pkcs7
+			});
+			return encrypted.toString()
+		},
 		copyUrl() {
-			var txt=this.qrValue.split("?")[1];
-			var toJaimiStr=getApp().aesEncrypt(txt);
-			toJaimiStr="https://frdzhtsignup.zsyflive.com/frd/"+toJaimiStr;
-			this.$copyText(toJaimiStr)
+			// var txt=this.qrValue.split("?")[1];
+			// var toJaimiStr=getApp().aesEncrypt(txt);
+			// toJaimiStr="https://frdzhtsignup.zsyflive.com/frd/"+toJaimiStr;
+			this.$copyText(this.qrValue)
 				.then((res) => {
 					console.log('asd', res);
 					uni.showToast({

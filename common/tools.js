@@ -42,7 +42,7 @@ var tools = {
 			'4':'https://shandongtibohui.zsyflive.com/profile/upload/2022/08/03/cc7fcbcb6483444aa73501d3a22f3c69_20220803092643A007.png',
 			'7':'https://shandongtibohui.zsyflive.com/profile/avatar/2023/03/20/blob_20230320163234A003.jpeg',
 			'8':'https://shandongtibohui.zsyflive.com/profile/upload/2022/08/03/5b7a91c9080c8042574c9ec8763888d.png',
-			'9':'https://shandongtibohui.zsyflive.com/profile/upload/2022/08/03/4a80f53502799bd30d0633b53c51e21.jpg',
+			'9':'https://shandongtibohui.zsyflive.com/profile/upload/2022/08/03/f5503bfd0fa1819b01d858ecb5df96e.jpg',
 			'10':'https://shandongtibohui.zsyflive.com/profile/upload/2022/08/03/7041baff1cbb8a8e97aa7c54c398b59.png',
 			'11':'https://shandongtibohui.zsyflive.com/profile/upload/2022/08/03/64862440c0b451323f79f6d22551748.png',
 			'5':'https://shandongtibohui.zsyflive.com/profile/upload/2022/08/03/35c8a0876feaff57765811023b70451.png',
@@ -162,7 +162,7 @@ var tools = {
 		}else if(exType==8){
 			var title="首届叶集定制家居暨供应链产业博览会"
 		}else if(exType==9){
-			var title="第十九届中国木业产业及供应链博览会"
+			var title="菏泽木业产业博览会"
 		}else if(exType==10){
 			var title="2024广西木业供应链博览会"
 		}else if(exType==11){

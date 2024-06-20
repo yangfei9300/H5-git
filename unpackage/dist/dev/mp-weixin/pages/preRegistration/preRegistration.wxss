@@ -1,0 +1,23 @@
+
+.topimg{
+	width: 750rpx;
+	height: 400rpx;
+	background-color: #f5f5f5;
+}
+.righta{
+	width: 60rpx;
+	background-color: red;
+	position: fixed;
+	bottom: 150rpx;
+	right: 0rpx;
+	text-align: center;
+	color: white;
+	padding:20rpx 0rpx;
+	border-radius: 15rpx 0rpx 0rpx 15rpx;
+}
+.righta1{
+	position: fixed;
+	bottom: 350rpx;
+	right: 20rpx;
+}
+

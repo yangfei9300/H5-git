@@ -572,6 +572,7 @@
 					.axios('post', this.$paths.enrollvisitorapi,data)
 					.then(res => {
 						if (res.code == 200) {
+							uni.removeStorageSync("upUid")
 							uni.setStorageSync("baomingxinxiYu",data)
 							uni.setStorageSync("visitorId",data.visitorId)
 							this.$emit("baomingInfoClick",{'form':this.form})

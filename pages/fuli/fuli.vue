@@ -1,8 +1,11 @@
 <template>
 	<view class="colonn center_center">
-		<view class="w-710" style="margin:20rpx;">
-			福利内容
-		</view>
+		<image
+		 mode="widthFix" class="w-750"
+		 v-if="yubaominghuacn.exhType==1" :src="yubaominghuacn.cover"
+		></image>
+		<rich-text v-else
+		:nodes="yubaominghuacn.invitationRules"></rich-text>
 	</view>
 </template>
 
@@ -10,7 +13,16 @@
 	export default {
 		data() {
 			return {
-				
+				yubaominghuacn:{}
+			}
+		},
+		onLoad() {
+			var yubaominghuacn = uni.getStorageSync('yubaominghuacn');
+			if(yubaominghuacn){
+				this.yubaominghuacn=yubaominghuacn;
+				setTimeout(res=>{
+					this.yubaominghuacn = uni.getStorageSync('yubaominghuacn');
+				},1000)
 			}
 		},
 		methods: {

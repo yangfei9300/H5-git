@@ -1,0 +1,41 @@
+
+.tishiview {
+	width: 700rpx;
+	padding: 25rpx 25rpx;
+	background-color: #c9c9c9;
+	margin-left: 25rpx;
+	margin-top: 40rpx;
+}
+.onetihs1 {
+	color: #371b64;
+}
+.xuanzekuang {
+	width: 650rpx;
+	border-bottom: 1px solid #c9c9c9;
+	border-left: 1px solid #c9c9c9;
+	border-right: 1px solid #c9c9c9;
+	padding: 20rpx 20rpx;
+}
+.shangyibu {
+	background-color: #009c8e;
+	width: 250rpx;
+	height: 70rpx;
+	text-align: center;
+	line-height: 70rpx;
+	border-radius: 10rpx;
+	color: white;
+	font-weight: bold;
+	font-size: 30rpx;
+}
+.xiayibux {
+	background-color: #009c8e;
+	width: 250rpx;
+	height: 70rpx;
+	text-align: center;
+	line-height: 70rpx;
+	border-radius: 10rpx;
+	color: white;
+	font-weight: bold;
+	font-size: 30rpx;
+}
+

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "邀约记录",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "tki-qrcode": "/components/tki-qrcode/tki-qrcode"
+  }
+}

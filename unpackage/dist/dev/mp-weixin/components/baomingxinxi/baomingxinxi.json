@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "biaofun-region": "/components/biaofun-region/biaofun-region"
+  },
+  "component": true
+}

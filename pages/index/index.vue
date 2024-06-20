@@ -7,8 +7,6 @@
 		
 		
 		<block v-if="exType!=1">
-			
-			
 			<view class="colonn viewhom colonn center_center"
 			:style="{  
 				'background-image':'url('+yubaomingInfo.cover+')'
@@ -31,9 +29,6 @@
 				<view class="tiquerweima1" @click.stop="toPre(1)">领取门票</view>
 			</view>
 		</block>
-		
-		
-		
 		<!-- <block v-else>
 			<view class="colonn viewhom colonn center_center"
 			>
@@ -43,7 +38,6 @@
 				</view>
 			</view>
 		</block> -->
-		
 	</view>
 </template>
   
@@ -245,12 +239,12 @@
 				if ((data.upUid && unionid != data.upUid) || (!unionid && data.upUid)) {
 					uni.setStorageSync("upUid", data.upUid);
 				}
+				
 				if (data.name) {
 					uni.setStorageSync("name", data.name);
 					if (data.name.indexOf("%") >=0) {
 						data.name=decodeURI(data.name);
 					}
-
 				}
 				this.options = data;
 				var unionid = uni.getStorageSync("unionid");

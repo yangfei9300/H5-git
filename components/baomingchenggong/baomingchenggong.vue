@@ -40,7 +40,8 @@
 					</view>
 					<view class="h-30"></view>
 				</view>
-				<view class="colonn w-650  center_center" style="background-color: #e6e6e6;">
+				<view class="colonn w-650  center_center" 
+				style="background-color: #e6e6e6;">
 					<view class="h-30"></view>
 					<view class="fw-b fs-30">确认码</view>
 					<view class="h-30 m-top-15">{{BaomingInfo.id}}</view>
@@ -157,7 +158,8 @@
 				var yubaominghuacn = uni.getStorageSync("yubaominghuacn");
 				console.log("获取手气手气手气",yubaominghuacn);
 				if (yubaominghuacn) {
-						var nowExhId=uni.getStorageSync("nowExhId");
+					
+					var nowExhId=uni.getStorageSync("nowExhId");
 					var linkUp = uni.getStorageSync("linkUp"+nowExhId);
 				
 					if (!linkUp && yubaominghuacn.jumpType == 1) {

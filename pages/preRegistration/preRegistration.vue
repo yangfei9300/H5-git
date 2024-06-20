@@ -2,12 +2,17 @@
 	<view>
 		<!-- BASE_IMG+ -->
 		
-		<image v-if="yubaominghuacn.banner" class="topimg" mode="aspectFill"   :src="yubaominghuacn.banner"></image>
+		<image v-if="yubaominghuacn.banner" 
+		class="topimg" mode="aspectFill"   
+		:src="yubaominghuacn.banner"></image>
 		<view 
 		@longpress="toClear"
 		style="width: 100rpx;height: 100rpx;background-color: red;position: absolute;top: 0rpx;right: 0rpx;opacity: 0;"
 		></view>
-		
+		<view
+		@longpress="toClear1"
+		style="width: 100rpx;height: 100rpx;background-color: red;position: absolute;top: 0rpx;left: 0rpx;opacity: 0;"
+		></view>
 		<view style="height: 20rpx;"></view>
 		<xiayibu :xiabiao="menuindex" ></xiayibu>
 		<baomingxinxi @baomingInfoClick="baomingInfoClick" v-if="menuindex==0"></baomingxinxi>
@@ -19,18 +24,48 @@
 		 v-if="menuindex==1" 
 		 @xiayibu="xiayibu"
 		></allwenti> -->
-		<baomingchenggong :yubaominghuacn="yubaominghuacn"  v-if="menuindex==2">
-			<view style="margin-top: 40upx;">
+		<baomingchenggong :yubaominghuacn="yubaominghuacn"  
+		v-if="menuindex==2">
+			<view class="colonn center_center" style="margin-top: 40upx;">
+				
 				<tki-qrcode v-if="ifShow" 
 				cid="qrcode2" ref="qrcode2" 
 				:val="qrValue" :size="size" 
 				:onval="onval" :loadMake="loadMake"  
 				 :usingComponents="true"
 				  @result="qrR" />
-				
+				  <view v-else style="width: 400rpx;height: 400rpx;">
+					  
+				  </view>
+				  <view class="h-20"></view>
+				  <view class="roww center_center">
+					 <!-- <view @click.stop="loadQrValue"
+					  style="font-weight: bold;color: blue;"
+					  class="fs-25"
+					  >点击刷新二维码</view> -->
+					  <view @click.stop="getQrValue"
+					  style="font-weight: bold;color: blue;"
+					  class="fs-25"
+					  >点击刷新二维码（有效期30分钟）</view>
+					  <!-- <view @click="getQrValue">chakan</view> -->
+				  </view>
+				  <view class="h-30"></view>
 			</view>
 		</baomingchenggong>
 		
+		<!--<view class="righta colonn">
+			<view>预</view>
+			<view>登</view>
+			<view>记</view>
+			<view>福</view>
+			<view>利</view>
+		</view> -->
+		<view class="righta1 " v-if="yubaominghuacn.invitationRules">
+			<image src="/static/fuli.png"
+			class="w-150" mode="widthFix"
+			@click.stop="tofuli"
+			></image>
+		</view>
 		
 	</view>
 </template>
@@ -39,6 +74,8 @@
 	import ayQrcode from "@/components/ay-qrcode/ay-qrcode.vue"
 	import tkiQrcode from '@/components/tki-qrcode/tki-qrcode.vue'
 	
+	const CryptoJS = require('crypto-js') // 引用AES源码js
+	const key = CryptoJS.enc.Utf8.parse('2020081720200817') // 十六位十六进制数作为密钥
 	
 	export default {
 		components: {
@@ -61,9 +98,19 @@
 				src: '' ,// 二维码生成后的图片地址或base64
 				
 				exType:"",
+				
 			}
 		},
 		onLoad(options) {
+			
+			var yubaominghuacn = uni.getStorageSync('yubaominghuacn');
+			if(yubaominghuacn){
+				this.yubaominghuacn=yubaominghuacn;
+				setTimeout(res=>{
+					this.yubaominghuacn = uni.getStorageSync('yubaominghuacn');
+				},1000)
+			}
+			
 			this.BASE_IMG=this.$paths.BASE_IMG;
 			
 			this.exType=parseInt(uni.getStorageSync("exType"))
@@ -79,13 +126,74 @@
 			if(!this.yubaominghuacn){
 				this.cicizhanhuixinxi()
 			}else{
-				this.qrValue=uni.getStorageSync("unionid")
-				this.ifShow=true;
+				// var timestamp = Date.parse(new Date());
+				// var qrValue= timestamp+"-"+ uni.getStorageSync("unionid")
+				// var content= this.Encrypt(qrValue);
+				// this.qrValue=content;
+				// this.ifShow=true;
+				this.getQrValue();
 			}
-			
 		},
 		methods: {
-			
+			tofuli(){
+				uni.navigateTo({
+					url:"/pages/fuli/fuli"
+				})
+			},
+			getQrValue(){
+				this.ifShow=false;
+				var exType = uni.getStorageSync('exType');
+				var nowExhId = uni.getStorageSync('nowExhId');
+				var unionid=uni.getStorageSync("unionid");
+				var timestamp = Date.parse(new Date());
+				// timestamp=timestamp-2200000
+				var qrValue = 'https://frdzhtsignup.zsyflive.com?exType=' + exType + '&exhId=' + nowExhId + '&upUid=' + unionid+"&timestamp="+timestamp;
+				var txt=qrValue.split("?")[1];
+				var toJaimiStr=getApp().aesEncrypt(txt);
+				toJaimiStr="https://frdzhtsignup.zsyflive.com/frd/"+toJaimiStr;
+				this.qrValue=toJaimiStr;
+				console.log("asdasd",this.qrValue)
+				setTimeout(res=>{
+					this.ifShow=true;
+				},50)
+			},
+			loadQrValue(){
+				this.ifShow=false;
+				var timestamp = Date.parse(new Date());
+				timestamp=timestamp-2200000
+				var qrValue= timestamp+"-"+ uni.getStorageSync("unionid")
+				var content= this.Encrypt(qrValue);
+				this.qrValue=content;
+				console.log("erweima",this.qrValue)
+				setTimeout(res=>{
+					this.ifShow=true;
+				},50)
+			},
+			// 解密方法
+			Decrypt(word) {
+				let decrypt = CryptoJS.AES.decrypt(word, key, {
+					mode: CryptoJS.mode.ECB,
+					padding: CryptoJS.pad.Pkcs7
+				})
+				let decryptedStr = decrypt.toString(CryptoJS.enc.Utf8)
+				return decryptedStr.toString()
+			},
+			// 加密方法
+			Encrypt(word) {
+				let encrypted = CryptoJS.AES.encrypt(word, key, {
+					mode: CryptoJS.mode.ECB,
+					padding: CryptoJS.pad.Pkcs7
+				});
+				return encrypted.toString()
+			},
+			toClear1(){
+				uni.clearStorageSync();
+				setTimeout(res=>{
+					uni.reLaunch({
+						url:"/pages/login/login"
+					})
+				},1000)
+			},
 			toClear(){
 				// upUid
 				var unionid=uni.getStorageSync("unionid");
@@ -284,7 +392,14 @@
 					.catch(err => {});
 			},
 			handleShowCodeClick(){
-				this.qrValue=uni.getStorageSync("unionid")
+				
+				var timestamp = Date.parse(new Date());
+				var qrValue= timestamp+"-"+ uni.getStorageSync("unionid")
+				var content= this.Encrypt(qrValue);
+				this.qrValue=content;
+				
+				
+				
 				this.ifShow=true;
 			},
 			
@@ -420,5 +535,21 @@
 	width: 750rpx;
 	height: 400rpx;
 	background-color: #f5f5f5;
+}
+.righta{
+	width: 60rpx;
+	background-color: red;
+	position: fixed;
+	bottom: 150rpx;
+	right: 0rpx;
+	text-align: center;
+	color: white;
+	padding:20rpx 0rpx;
+	border-radius: 15rpx 0rpx 0rpx 15rpx;
+}
+.righta1{
+	position: fixed;
+	bottom: 350rpx;
+	right: 20rpx;
 }
 </style>

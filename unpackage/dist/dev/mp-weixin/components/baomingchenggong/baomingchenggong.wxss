@@ -1,0 +1,33 @@
+
+.zhezhaoim {
+	position: fixed;
+	bottom: 0rpx;
+	left: 0rpx;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+.yqhyxfl {
+	width: 550rpx;
+	height: 80rpx;
+	background-color: #2E7EFC;
+	border-radius: 10rpx;
+	margin-top: 20rpx;
+	text-align: center;
+	color: white;
+	line-height: 80rpx;
+}
+.yojiatu {
+	position: fixed;
+	bottom: 150rpx;
+	right: 50rpx;
+}
+.saddasd {
+	background-color: blue;
+	text-align: center;
+	line-height: 70rpx;
+	color: white;
+	width: 350rpx;
+	height: 70rpx;
+	border-radius: 15rpx;
+	margin-top: 50rpx;
+}
+

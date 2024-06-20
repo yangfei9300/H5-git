@@ -1,17 +1,15 @@
 <script>
 	export default {
 		onLoad() {
-			
-			
-			
 			// http://192.168.0.69:8080?exType=3&exhId=149    全屋
 			// http://192.168.0.69:8080?exType=5&exhId=150    建材
 			// http://192.168.0.69:8080?exType=4&exhId=155    秋交会
 			// http://192.168.0.69:8080?exType=7&exhId=153    西安五金
 			// http://192.168.0.69:8080?exType=2&exhId=151    体博会
 			// http://192.168.0.69:8080?exType=12&exhId=158    武汉
-			// http://192.168.0.69:8080?exType=1&exhId=148     环保
-		}, 
+			// http://192.168.0.69:8080?exType=9&exhId=156    林交会
+			// http://192.168.0.69:8080?exType=1&exhId=148&upUid=18340070905     环保
+		},
 		// 18853917606
 		onLaunch: function(options) {
 			console.log("项目初始化")
@@ -33,7 +31,7 @@
 			console.log('App Launch', options, options.clear == 1);
 			if (url.indexOf("clear=1") >= 0) {
 				uni.clearStorageSync();
-			}  
+			}
 			//判断是否有自己的手机号
 			this.$tools.initDate();
 			if (url.indexOf("wxPhone") >= 0) {

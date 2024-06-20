@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "预登记",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "xiayibu": "/components/xiayibu/xiayibu",
+    "baomingxinxi": "/components/baomingxinxi/baomingxinxi",
+    "tianxiewenjuan": "/components/tianxiewenjuan/tianxiewenjuan",
+    "baomingchenggong": "/components/baomingchenggong/baomingchenggong",
+    "tki-qrcode": "/components/tki-qrcode/tki-qrcode",
+    "ay-qrcode": "/components/ay-qrcode/ay-qrcode"
+  }
+}

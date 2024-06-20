@@ -472,10 +472,10 @@ util.jwxModule = function(options, title, desc, link, imgUrl) {
 		imgUrl =
 			"https://shandongtibohui.zsyflive.com/profile/upload/2022/08/03/5b7a91c9080c8042574c9ec8763888d.png";
 	} else if (exType == 9) {
-		var title = "第十九届中国木业产业及供应链博览会"
+		var title = "菏泽木业产业博览会"
 		desc = "时间：2024年10.13-15日\n地址：菏泽国际会展中心";
 		imgUrl =
-			"https://shandongtibohui.zsyflive.com/profile/upload/2022/08/03/4a80f53502799bd30d0633b53c51e21.jpg";
+			"https://shandongtibohui.zsyflive.com/profile/upload/2022/08/03/f5503bfd0fa1819b01d858ecb5df96e.jpg";
 	} else if (exType == 10) {
 		// 南宁全屋定制供应链展
 		var title = "2024广西木业供应链博览会"
@@ -499,6 +499,9 @@ util.jwxModule = function(options, title, desc, link, imgUrl) {
 			"https://shandongtibohui.zsyflive.com/profile/upload/2022/08/03/wuhan.png";
 	}
 	// link = link.indexOf('pages') > 0 ? link.slice(0,link.indexOf('/#/')) + '?' + link.slice(link.indexOf('/#/') + 2) + link.slice(link.indexOf('/#/')) :  link
+	
+	
+	
 	var debug = false;
 	if (exType == 11) {
 		debug = false;
@@ -507,7 +510,7 @@ util.jwxModule = function(options, title, desc, link, imgUrl) {
 	
 	// 修改分享文案
 	var bmxxInfo=uni.getStorageSync("bmxxInfo");
-	if (exType == 1) {
+	if (exType == 1) {  
 		title=bmxxInfo.visitorName+"邀您参观第10届环保展，您参观，我买单！";
 	}else{
 		if(bmxxInfo){
@@ -570,10 +573,11 @@ util.jwxModule = function(options, title, desc, link, imgUrl) {
 	// var link = "";
 
 	console.error("xinxi", xinxi)
-
-	if (xinxi.platform == 'ios') {
-		link = uni.getStorageSync("locationhref");
-	}
+	
+	// 0606修改
+	// if (xinxi.platform == 'ios') {
+	// 	link = uni.getStorageSync("locationhref");
+	// }
 
 	console.error("link", link, desc, title, imgUrl)
 

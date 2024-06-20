@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/preRegistration/preRegistration",
+    "pages/xieyi/xieyi",
+    "pages/groupQr/groupQr",
+    "pages/fuli/fuli",
+    "pages/yaoyuejilu/yaoyuejilu",
+    "pages/kzsjtj/kzsjtj"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "预报名",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "navigationStyle": "custom",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {}
+}

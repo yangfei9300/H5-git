@@ -58,6 +58,9 @@
 		},
 		methods: {
 			
+			
+		
+			
 			copyGet(){
 				var txt=this.qrValue.split("?")[1];
 				var toJaimiStr=getApp().aesEncrypt(txt);

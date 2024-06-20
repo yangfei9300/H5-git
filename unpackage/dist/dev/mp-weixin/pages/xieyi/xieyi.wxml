@@ -1,0 +1,1 @@
+<view class="p-all-20"><block wx:if="{{options.type==1}}"><block><rich-text nodes="{{xieyis.agreement}}"></rich-text></block></block><block wx:if="{{options.type==2}}"><block><rich-text nodes="{{xieyis.policy}}"></rich-text></block></block></view>
