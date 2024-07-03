@@ -121,8 +121,8 @@
 				</view>
 				
 				
-				<!-- <view class="roww fs-27 border_bottom  m-top-25 p-bottom-20"
-				v-if="exType&&exType==9"
+				<view class="roww fs-27 border_bottom  m-top-25 p-bottom-20"
+				v-if="exType&&exType==2"
 				>
 					<view class="roww center_center">
 						<text  class="color2_r m-right-5">*</text>
@@ -131,7 +131,7 @@
 					<view class="allline"></view>
 					<input   v-model="form.idNumber"  class="shuruku text_align2_r" placeholder="请输入身份证"
 					 />
-				</view> -->
+				</view>
 				
 				<view class="roww fs-27 border_bottom  m-top-25 p-bottom-20">
 					<view class="roww center_center">
@@ -488,12 +488,12 @@
 				// 	return false;
 				// }
 				var exType=uni.getStorageSync("exType")
-				// if(exType&&exType==9){
-				// 	if(this.form.idNumber==""){
-				// 		this.$tools.showToast("请输入身份证");
-				// 		return false;
-				// 	}
-				// }
+				if(exType&&exType==2){
+					if(this.form.idNumber==""){
+						this.$tools.showToast("请输入身份证");
+						return false;
+					}
+				}
 				
 				// 验证验证码
 				// if(this.codeNumber!=this.code&&this.code!='202304'){
